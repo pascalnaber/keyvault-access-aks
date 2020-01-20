@@ -1,0 +1,18 @@
+﻿@model KeyVaultReader.Models.SecretsViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+    <div class="text-center">
+        <h1 class="display-4">KeyVault Secret Reader</h1>
+        <p>Reading from KeyVault <b> @Model.KeyVaultName </b></p>
+        <p>Type the name of your secret here to fetch it using the Managed Identity</p>
+
+        <form method="post">
+            Secret <input asp-for="SecretName" />
+            <br />
+            <input type="submit" value="Get Value" />
+        </form>
+
+        <p><h2>@Model.SecretName: @Model.Secret</h2></p>
+    </div>

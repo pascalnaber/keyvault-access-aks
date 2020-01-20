@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: keyvaultreader
+    aadpodidbinding: keyvaultaccess
+  name: keyvaultreader  
+spec:
+  template:
+    metadata:
+      labels:
+        app: keyvaultreader
+        aadpodidbinding: keyvaultaccess
+    spec:
+      containers:
+      - name: keyvaultreader
+        image: "pascalnaber/keyvaultreader:1"
+        env:        
+        - name: KeyVaultName
+          value: "matrix-secrets-rbac-dev"
+        imagePullPolicy: Always
+        ports:
+          - containerPort: 80
