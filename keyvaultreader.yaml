@@ -21,3 +21,14 @@ spec:
         imagePullPolicy: Always
         ports:
           - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+    name: keyvaultreader-svc
+spec:
+    type: LoadBalancer
+    selector:
+        app: keyvaultreader
+    ports:
+    - port: 80
